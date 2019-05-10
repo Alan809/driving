@@ -1,0 +1,97 @@
+[{
+    "id": 1,
+    "type": "radio",
+    "title": "以下哪个是描述大熊猫的?",
+    "istrue": "憨厚可爱",
+    "mychoose": null,
+    "disable": false,
+    "checks": [{
+        "content": "骨瘦如柴",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "憨厚可爱",
+        "checked": false,
+        "act": "bg"
+    }, {
+        "content": "不喜欢啃竹子",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "没有黑眼圈",
+        "checked": false,
+        "act": "act"
+    }]
+}, {
+    "id": 2,
+    "type": "radio",
+    "title": "3月1日是什么节日?",
+    "istrue": "国际海豹日",
+    "mychoose": null,
+    "disable": false,
+    "checks": [{
+        "content": "国际海豚日",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "国际海豹日",
+        "checked": false,
+        "act": "bg"
+    }, {
+        "content": "国际鲨鱼日",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "国际鲸鱼日",
+        "checked": false,
+        "act": "act"
+    }]
+}, {
+    "id": 3,
+    "type": "radio",
+    "title": "暹罗猫的老家在哪里?",
+    "istrue": "泰国",
+    "mychoose": null,
+    "disable": false,
+    "checks": [{
+        "content": "美国",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "德国",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "泰国",
+        "checked": false,
+        "act": "bg"
+    }, {
+        "content": "意大利",
+        "checked": false,
+        "act": "act"
+    }]
+}, {
+    "id": 4,
+    "type": "radio",
+    "title": "萨摩耶被称为什么",
+    "istrue": "微笑天使",
+    "mychoose": null,
+    "disable": false,
+    "checks": [{
+        "content": "白毛天使",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "黑毛天使",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "冷酷天使",
+        "checked": false,
+        "act": "act"
+    }, {
+        "content": "微笑天使",
+        "checked": false,
+        "act": "bg"
+    }]
+}]

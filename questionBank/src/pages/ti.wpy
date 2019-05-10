@@ -1,0 +1,109 @@
+<template>
+    <view class="topBox">
+        <view class="nums">{{defaultId+1}}/{{getList.length}}</view>
+        <repeat for="{{getList}}" key="index" index="index" item="item">
+             <Item :items.sync="item" wx:if="{{index==defaultId}}"/>
+        </repeat>
+       <view class="foot">
+           <Foot :defaultId.sync="defaultId"/>
+       </view>
+       <Tan wx:if="{{flag}}" :nums.sync="num" :times.sync="times"/>
+    </view>
+</template>
+
+<script>
+import wepy from "wepy";
+import {connect} from "wepy-redux";
+import Foot from "../components/foot";
+import Item from "../components/item";
+import {GET_LIST} from "../store/types/list";
+import Tan from "../components/tan";
+@connect(
+    {
+        getList(state){
+            return state.list.allList
+        }
+    },
+    {
+         sendList:GET_LIST
+    }
+)
+
+export default class Ti extends wepy.page{
+    data={
+        defaultId:0,
+        timer:null,
+        startTime:new Date().getTime(),
+        times:"",
+        num:0,
+        flag:false
+    }
+    components={
+        Foot,
+        Item,
+        Tan
+    }
+    events={
+        changeTime(time){
+            let b=time-this.startTime;
+            let fen=Math.floor(b/1000/60%60);
+            let miao=Math.floor(b/1000%60);
+          
+            this.getList.forEach(v=>{
+                if(v.mychoose){
+                    this.num+=25;
+                }
+            });
+            this.times=fen+'分'+miao+'秒';
+            this.flag=true;
+        },
+        changeId(id){
+            id<=this.getList.length-1 ? this.defaultId=id : this.defaultId=0;
+        },
+        sendData(item){
+            item.disable=true;
+            this.getList.forEach((v)=>{
+                if(v.id===item.id){
+                    v=item;
+                }
+                return v;
+            });
+           this.methods.sendList(this.getList)
+        },
+        changeFlag(){
+            this.flag=false;
+            wx.navigateBack()
+        }
+    }
+   
+}
+</script>
+
+<style>
+    page{
+        width:100%;
+        height: 100%;
+    }
+    .topBox{
+         width:100%;
+        height: 100%;
+    }
+    .nums{
+         width:100%;
+        height: 70rpx;
+        font-size: 32rpx;
+        text-align: right;
+        line-height: 70rpx;
+        padding:0 20rpx;
+        box-sizing: border-box;
+    }
+    .radio-group label{
+        display: block;
+    }
+    .foot{
+        width:100%;
+        height: 120rpx;
+    }
+</style>
+
+

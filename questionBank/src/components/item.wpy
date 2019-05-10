@@ -1,0 +1,61 @@
+<template>
+    <view class="ti">
+            <view class="tits">第{{items.id}}题:{{items.title}}</view>
+            <view class="type" wx:if="{{items.type=='radio'}}">单选题</view>
+             <view class="type" wx:else>多选题</view>
+            <view class="types">
+                    <repeat for="{{items.checks}}" key="index" index="index" item="item">
+                         <radio-group class="radio-group" @change="radioChange({{index}})">
+                         <label class="radio">
+                            <radio value="{{item.content}}" 
+                            checked="{{item.checked}}" 
+                            color="{{item.act=='act' ? 'red' : '' }}"
+                            disabled="{{items.disable}}"
+                            />
+                            {{item.content}}
+                        </label>
+                        </radio-group>
+                    </repeat>
+                
+            </view>
+            </view>
+</template>
+
+<script>
+import wepy from "wepy";
+
+export default class Foot extends wepy.component{
+    props={
+        items:Object
+    }
+    methods={
+        radioChange(ind,e){
+            this.items.checks[ind].checked=true;
+            if(this.items.istrue==e.detail.value){
+                this.items.mychoose=true;
+            }
+            this.items.checks.forEach(v=>{
+                if(v.content==this.items.istrue){
+                    v.checked=true;
+                }
+            })
+      
+            this.$emit('sendData',this.items)
+        }
+    }
+}
+</script>
+
+<style>
+    .radio-group .radio .act{
+       background: red;
+    }
+    .radio-group .radio .bg{
+        background:green;
+    }
+</style>
+
+
+
+
+

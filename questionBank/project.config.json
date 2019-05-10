@@ -1,0 +1,16 @@
+{
+	"description": "A WePY project",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"appid": "wx23f9054a15947295",
+	"projectname": "driving",
+	"miniprogramRoot": "dist/",
+	"condition": {}
+}

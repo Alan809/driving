@@ -1,0 +1,79 @@
+<template>
+    <view class="wrap">
+        <view class="top"></view>
+        <view class="main_box">
+            <repeat for="{{list}}" key="index" index="index" item="item">
+                <view class="main_sbox" @tap="goTi">{{item}}</view>
+            </repeat>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from "wepy";
+import {connect} from "wepy-redux";
+import {getData} from "../store/actions/list";
+
+@connect(
+    {},
+    {
+        getData
+    }
+)
+
+export default class Main extends wepy.page{
+    data={
+        list:["顺序练习","模拟考试","随机练习","章节练习","错题练习","收藏练习"]
+    }
+    onReady(){
+        this.methods.getData('http://169.254.213.89:8080/mock/data.json');
+
+    }
+    methods={
+        goTi(){
+            wx.navigateTo({
+                url:"/pages/ti"
+            })
+        }
+    }
+}
+</script>
+
+<style>
+    page{
+        width:100%;
+        height: 100%;
+    }
+    .wrap{
+         width:100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .top{
+        width:100%;
+        height: 350rpx;
+        background: skyblue;
+    }
+    .main_box{
+        width:100%;
+        flex:1;
+      background: #efefef;
+      padding:0 80rpx;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .main_sbox{
+        width:40%;
+        height: 180rpx;
+        background: orangered;
+        border-radius: 10rpx;
+        text-align: center;
+        line-height: 180rpx;
+    }
+</style>
+
+
